@@ -1,0 +1,65 @@
+00 { 182-Byte Prgm }
+
+@ This program replaces the top number on the stack with its least
+@ factor greater than one
+01▸LBL "FACTR"
+
+@ Save stack
+02 LSTO "X_SAVE"
+03 R↓
+04 LSTO "Y_SAVE"
+05 R↓
+06 LSTO "Z_SAVE"
+07 R↓
+08 LSTO "T_SAVE"
+09 LASTX
+10 LSTO "L_SAVE"
+11 CLST
+
+@ Read input
+12 RCL "X_SAVE"
+13 LSTO "N"
+14 1
+15 -
+16 X≤0?
+17 GTO 98 @ noop end
+
+@ Initialise loop variable
+18 2
+19 LSTO "D"
+
+@ Loop
+20▸LBL 00
+21 RCL "N"
+22 RCL "D"
+23 MOD
+24 X=0?
+25 GTO 99 @ end
+26 1
+27 RCL+ "D"
+28 LSTO "D"
+29 GTO 00
+
+@ End
+30▸LBL 99
+31 RCL "X_SAVE"
+32 LSTO "L_SAVE"
+33 RCL "D"
+34 LSTO "X_SAVE"
+35 XEQ 10 @ restore stack
+36 RTN
+
+@ Noop end
+37▸LBL 98
+38 XEQ 10
+39 RTN
+
+@ SUBROUTINE Restore stack
+40▸LBL 10
+41 RCL "L_SAVE"
+42 STO ST L
+43 RCL "T_SAVE"
+44 RCL "Z_SAVE"
+45 RCL "Y_SAVE"
+46 RCL "X_SAVE"
+47 RTN
