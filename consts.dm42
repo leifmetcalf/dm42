@@ -1,5 +1,5 @@
 00 { 235-Byte Prgm }
-01▸LBL "CONSTS"
+01▸LBL "CNSTS"
 
 02▸LBL A
 03 CLMENU
