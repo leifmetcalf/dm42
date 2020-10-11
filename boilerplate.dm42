@@ -1,0 +1,23 @@
+@ Boilerplate procedures to be copied into other programs.
+
+@ Save stack.
+LSTO "X_SAVE"
+R↓
+LSTO "Y_SAVE"
+R↓
+LSTO "Z_SAVE"
+R↓
+LSTO "T_SAVE"
+LASTX
+LSTO "L_SAVE"
+CLST
+
+@ Restore stack
+LBL 10
+RCL "L_SAVE"
+STO ST L
+RCL "T_SAVE"
+RCL "Z_SAVE"
+RCL "Y_SAVE"
+RCL "X_SAVE"
+END
